@@ -1,0 +1,68 @@
+<template name="adminMenu">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">TESTS</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Басты бет</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">БТС<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Жауап кілттері</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Рейтинг</li>
+                <li><a href="/admin/bts/rating/1">БТС-1</a></li>
+                <li><a href="/admin/bts/rating/2">БТС-2</a></li>
+                <li><a href="/admin/bts/rating/3">БТС-3</a></li>
+                <li><a href="/admin/bts/rating/4">БТС-4</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">КБО<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Жауап кілттері</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Рейтинг</li>
+                <li><a href="/admin/kbo/rating/1">КБО-1</a></li>
+                <li><a href="/admin/kbo/rating/2">КБО-2</a></li>
+                <li><a href="/admin/kbo/rating/3">КБО-3</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Нәтижелер</li>
+                <li><a href="/admin/kbo/results/1">КБО-1</a></li>
+                <li><a href="/admin/kbo/results/2">КБО-2</a></li>
+                <li><a href="/admin/kbo/results/3">КБО-3</a></li>
+                <li><a href="/admin/kbo/final">Финал</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ТАТ<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Жауап кілттері</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Рейтинг</li>
+                <li><a href="/admin/tat/rating/1">ТАТ-1</a></li>
+                <li><a href="/admin/tat/rating/2">ТАТ-2</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Нәтижелер</li>
+                <li><a href="/admin/tat/results/1">ТАТ-1</a></li>
+                <li><a href="/admin/tat/results/2">ТАТ-2</a></li>
+                <li><a href="/admin/tat/final">Жалпы</a></li>
+              </ul>
+            </li>
+            <li><a href="/admin/configs">Баптаулар</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout">Жүйеден шығу</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+</template>

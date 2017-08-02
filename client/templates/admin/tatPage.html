@@ -1,0 +1,32 @@
+<template name="tatPage">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>School ID</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Branch</th>
+                <th>TAT-1: 2015-2016</th>
+                <th>TAT-2: 2015-2016</th>
+                <th>TAT-1: 2016-2017</th>
+                <th>TAT-2: 2016-2017</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each results}}
+            <tr>
+                <th>{{schoolId}}</th>
+                <th>{{teacherId}}</th>
+                <th>{{name}}</th>
+                <th>{{surname}}</th>
+                <th>{{branch}}</th>
+                <th>{{tat1}}</th>
+                <th>{{tat2}}</th>
+                <th>{{tat3}}</th>
+                <th>{{tat4}}</th>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>
