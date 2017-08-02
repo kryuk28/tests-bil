@@ -1,0 +1,56 @@
+<template name="tatAdminResults">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>КБО-{{tatNo}} Нәтиже</h4>
+            <div class="row">
+                    {{> academicYear}}
+                    <select class="subjectId">
+                        <option value="01">Алгебра</option>
+                        <option value="02">Физика</option>
+                        <option value="03">Химия</option>
+                        <option value="04">Биология</option>
+                        <option value="05">Ағылшын тілі</option>
+                        <option value="06">География</option>
+                        <option value="08">Информатика</option>
+                        <option value="09">Қазақ тілі</option>
+                        <option value="10">Түрік тілі</option>
+                        <option value="11">Орыс тілі</option>
+                        <option value="12">Қазақстан тарихы</option>
+                    </select>
+            </div>
+            {{#if Template.subscriptionsReady}}
+            <table class="table table-striped">
+                <thead>
+                    <tr class="bts-header">
+                        <th>#</th>
+                        <th>Мектеп ID</th>
+                        <th>Мектеп аты</th>
+                        <th>Мұғалім ID</th>
+                        <th>Аты</th>
+                        <th>Жөні</th>
+                        <th>Лауазымы</th>
+                        <th>Нәтиже</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each results}}
+                    <tr>
+                        <td>{{math @index "+" 1}}</td>
+                        <td>{{schoolId}}</td>
+                        <td>{{schoolName schoolId}}</td>
+                        <td>{{teacherId}}</td>
+                        <td>{{teacherName}}</td>
+                        <td>{{teacherSurname}}</td>
+                        <td>{{position}}</td>
+                        <td>{{result}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{else}}
+            <p>Loading...</p>
+            {{/if}}
+        </div>
+    </div>
+
+</template>

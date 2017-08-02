@@ -21,20 +21,16 @@
                         <th>#</th>
                         <th>Мектеп ID</th>
                         <th>Мектеп аты</th>
+                        <th>Алгебра</th>
                         <th>Физика</th>
                         <th>Химия</th>
-                        <th>Жалпы тарих</th>
                         <th>Биология</th>
-                        <th>Информатика</th>
-                        <th>География</th>
-                        <th>Тарих</th>
-                        <th>Орыс тілі</th>
-                        <th>Қазақ тілі</th>
-                        <th>Қазақ әдебиеті</th>
                         <th>Ағылшын тілі</th>
+                        <th>География</th>
+                        <th>Қазақ тілі</th>
                         <th>Түрік тілі</th>
-                        <th>Алгебра</th>
-                        <th>Геометрия</th>
+                        <th>Орыс тілі</th>
+                        <th>Тарих</th>
                         <th>Жалпы</th>
                     </tr>
                 </thead>
@@ -43,21 +39,17 @@
                     <tr>
                         <td>{{math @index "+" 1}}</td>
                         <td>{{schoolId}}</td>
-                        <td>{{shoolId}}</td>
-                        <td>{{physics}}</td>
-                        <td>{{chemistry}}</td>
-                        <td>{{world_history}}</td>
-                        <td>{{biology}}</td>
-                        <td>{{computer_science}}</td>
-                        <td>{{geography}}</td>
-                        <td>{{kazakh_history}}</td>
-                        <td>{{russian_lang}}</td>
-                        <td>{{kazakh_lang}}</td>
-                        <td>{{literature}}</td>
-                        <td>{{english_lang}}</td>
-                        <td>{{turkish_lang}}</td>
-                        <td>{{algebra}}</td>
-                        <td>{{geometry}}</td>
+                        <td>{{schoolName schoolId}}</td>
+                        <td>{{points "01"}}</td>
+                        <td>{{points "02"}}</td>
+                        <td>{{points "03"}}</td>
+                        <td>{{points "04"}}</td>
+                        <td>{{points "05"}}</td>
+                        <td>{{points "06"}}</td>
+                        <td>{{points "09"}}</td>
+                        <td>{{points "10"}}</td>
+                        <td>{{points "11"}}</td>
+                        <td>{{points "12"}}</td>
                         <td>{{total}}</td>
                     </tr>
                     {{/each}}

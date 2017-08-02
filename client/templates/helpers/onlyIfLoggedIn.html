@@ -1,8 +1,12 @@
 <template name="onlyIfLoggedIn">
   {{#if authInProcess}}
+  <div class="container">
       <div class="row">
-          <h1>Loading...</h1>
+          <div class="col-md-12">
+              <h5>Loading...</h5>
+          </div>
       </div>
+  </div> <!-- /container -->
   {{else}}
     {{#if canShow}}
       {{> UI.contentBlock }}
