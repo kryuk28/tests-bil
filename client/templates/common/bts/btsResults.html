@@ -1,12 +1,11 @@
-<template name="btsRating">
+<template name="btsResults">
     <div class="row">
         <div class="col-md-12">
-            <h4>БТС-{{btsNo}} Рейтинг</h4>
+            <h4>БТС-{{btsNo}} Нәтиже</h4>
             <div class="row">
                     {{> academicYear}}
                     <label for="">Сынып</label>
                     <select class="grade">
-                        <option value="all">Жалпы</option>
                         <option value="7">7 cынып</option>
                         <option value="8">8 cынып</option>
                         <option value="9">9 cынып</option>
@@ -18,18 +17,19 @@
                 <thead>
                     <tr class="bts-header">
                         <th>#</th>
-                        <th>Мектеп ID</th>
-                        <th>Мектеп аты</th>
+                        <th>Оқушы ID</th>
+                        <th>Аты</th>
+                        <th>Жөні</th>
                         <th>Физика</th>
                         <th>Химия</th>
                         <th>Жалпы тарих</th>
                         <th>Биология</th>
                         <th>Информатика</th>
-                        <th>География</th>
-                        <th>Тарих</th>
                         <th>Орыс тілі</th>
                         <th>Қазақ тілі</th>
                         <th>Қазақ әдебиеті</th>
+                        <th>География</th>
+                        <th>Тарих</th>
                         <th>Ағылшын тілі</th>
                         <th>Түрік тілі</th>
                         <th>Алгебра</th>
@@ -41,22 +41,23 @@
                     {{#each results}}
                     <tr>
                         <td>{{math @index "+" 1}}</td>
-                        <td>{{schoolId}}</td>
-                        <td>{{shoolId}}</td>
-                        <td>{{physics}}</td>
-                        <td>{{chemistry}}</td>
-                        <td>{{world_history}}</td>
-                        <td>{{biology}}</td>
-                        <td>{{computer_science}}</td>
-                        <td>{{geography}}</td>
-                        <td>{{kazakh_history}}</td>
-                        <td>{{russian_lang}}</td>
-                        <td>{{kazakh_lang}}</td>
-                        <td>{{literature}}</td>
-                        <td>{{english_lang}}</td>
-                        <td>{{turkish_lang}}</td>
-                        <td>{{algebra}}</td>
-                        <td>{{geometry}}</td>
+                        <td>{{studentId}}</td>
+                        <td>{{name}}</td>
+                        <td>{{surname}}</td>
+                        <td>{{physics.points}}</td>
+                        <td>{{chemistry.points}}</td>
+                        <td>{{world_history.points}}</td>
+                        <td>{{biology.points}}</td>
+                        <td>{{computer_science.points}}</td>
+                        <td>{{russian_lang.points}}</td>
+                        <td>{{kazakh_lang.points}}</td>
+                        <td>{{literature.points}}</td>
+                        <td>{{geography.points}}</td>
+                        <td>{{kazakh_history.points}}</td>
+                        <td>{{english_lang.points}}</td>
+                        <td>{{turkish_lang.points}}</td>
+                        <td>{{algebra.points}}</td>
+                        <td>{{geometry.points}}</td>
                         <td>{{total}}</td>
                     </tr>
                     {{/each}}

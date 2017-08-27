@@ -1,8 +1,8 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import './tatAdminResults.html';
+import './tatResults.html';
 
-Template.tatAdminResults.onCreated(function(){
+Template.tatResults.onCreated(function(){
     let template = this
     template.subjectId = new ReactiveVar('01')
     template.subscribe('schools')
@@ -12,19 +12,16 @@ Template.tatAdminResults.onCreated(function(){
 
 })
 
-Template.tatAdminResults.helpers({
+Template.tatResults.helpers({
     tatNo() {
         return FlowRouter.getParam('tatNo')
     },
     results() {
         return TatResults.find({},{sort:{result:-1}})
-    },
-    schoolName(schoolId) {
-        return Schools.findOne({schoolId:schoolId}) ? Schools.findOne({schoolId:schoolId}).shortName : undefined
     }
 })
 
-Template.tatAdminResults.events({
+Template.tatResults.events({
     'change .subjectId'(event,template) {
         template.subjectId.set(event.target.value)
     }

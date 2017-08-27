@@ -1,0 +1,46 @@
+<template name="studentTransferList">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Оқушы трансфер тізімі</h4>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label for="schoolId">Іздеу:</label>
+                            <input type="text" class="form-control" id="search" placeholder="Аты" name="name_search">
+                            <input type="text" class="form-control" id="search" placeholder="Жөні" name="surname_search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{#if Template.subscriptionsReady}}
+            <table class="table table-striped">
+                <thead>
+                    <tr class="bts-header">
+                        <th>#</th>
+                        <th>Оқушы ID</th>
+                        <th>Қайдан</th>
+                        <th>Сыныбы</th>
+                        <th>Аты-жөні</th>
+                        <th>Оқушылар тізіміне қосу</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each students}}
+                    <tr>
+                        <td>{{math @index "+" 1}}</td>
+                        <td>{{studentId}}</td>
+                        <td>{{schoolName schoolId}}</td>
+                        <td>{{grade}}{{division}}</td>
+                        <td>{{surname}} {{name}}</td>
+                        <td><a href="#" id="accept">Тізімге қосу</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{else}}
+            <p>Loading...</p>
+            {{/if}}
+        </div>
+    </div>
+</template>

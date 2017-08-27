@@ -1,12 +1,20 @@
-<template name="tatAdminRating">
+<template name="kboFinalResults">
     <div class="row">
         <div class="col-md-12">
-            <h4>ТАТ-{{tatNo}} Рейтинг</h4>
+            <h4>КБО Финал</h4>
             <div class="row">
                     {{> academicYear}}
+                    <label for="">Сынып</label>
+                    <select class="grade">
+                        <option value="">Жалпы</option>
+                        <option value="7" selected>7 cынып</option>
+                        <option value="8">8 cынып</option>
+                        <option value="9">9 cынып</option>
+                        <option value="10">10 cынып</option>
+                        <option value="11">11 cынып</option>
+                    </select>
                     <label for="">Пән</label>
                     <select class="subjectId">
-                        <option value="all">Жалпы</option>
                         <option value="01">Алгебра</option>
                         <option value="02">Физика</option>
                         <option value="03">Химия</option>
@@ -27,7 +35,14 @@
                         <th>#</th>
                         <th>Мектеп ID</th>
                         <th>Мектеп аты</th>
-                        <th>Жалпы</th>
+                        <th>Оқушы ID</th>
+                        <th>Аты</th>
+                        <th>Жөні</th>
+                        <th>Сыныбы</th>
+                        <th>КБО-1</th>
+                        <th>КБО-2</th>
+                        <th>КБО-3</th>
+                        <th>Нәтиже</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +51,14 @@
                         <td>{{math @index "+" 1}}</td>
                         <td>{{schoolId}}</td>
                         <td>{{schoolName schoolId}}</td>
-                        <td>{{total}}%</td>
+                        <td>{{studentId}}</td>
+                        <td>{{name}}</td>
+                        <td>{{surname}}</td>
+                        <td>{{grade}}</td>
+                        <td>{{kbo1}}</td>
+                        <td>{{kbo2}}</td>
+                        <td>{{kbo3}}</td>
+                        <td>{{round 2 total}}</td>
                     </tr>
                     {{/each}}
                 </tbody>

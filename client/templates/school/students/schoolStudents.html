@@ -1,0 +1,57 @@
+<template name="schoolStudents">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Оқушы тізімі</h4>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label for="schoolId">Іздеу:</label>
+                            <input type="text" class="form-control" id="search" placeholder="Аты" name="name_search">
+                            <input type="text" class="form-control" id="search" placeholder="Жөні" name="surname_search">
+                            <input type="text" class="form-control" id="search" placeholder="Cыныбы" name="grade_search">
+                            <input type="text" class="form-control" id="search" placeholder="Бөлімі" name="division_search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{#if Template.subscriptionsReady}}
+            <table class="table table-striped">
+                <thead>
+                    <tr class="bts-header">
+                        <th>#</th>
+                        <th>Оқушы ID</th>
+                        <th>Сыныбы</th>
+                        <th>Аты-жөні</th>
+                        <th>Олимпиада пәні</th>
+                        <th>Өзгерту</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each students}}
+                    <tr>
+                        <td>{{math @index "+" 1}}</td>
+                        <td>{{studentId}}</td>
+                        <td>{{grade}}{{division}}</td>
+                        <td>{{surname}} {{name}}</td>
+                        <td>
+                            <select name="subjectId" id="kboSubject">
+                                <option value="free">---</option>
+                                {{#each subjects}}
+                                    <option value="{{subjectId}}" {{isOlympiadStudent ../studentId subjectId}}>
+                                        {{name}}
+                                    </option>
+                                {{/each}}
+                            </select>
+                        </td>
+                        <td><a href="/school/student/edit/{{_id}}">Өзгерту</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{else}}
+            <p>Loading...</p>
+            {{/if}}
+        </div>
+    </div>
+</template>

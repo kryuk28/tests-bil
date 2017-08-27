@@ -1,8 +1,8 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import './kboAdminResults.html';
+import './kboResults.html';
 
-Template.kboAdminResults.onCreated(function(){
+Template.kboResults.onCreated(function(){
     let template = this
     template.grade = new ReactiveVar('7')
     template.subjectId = new ReactiveVar('01')
@@ -13,19 +13,16 @@ Template.kboAdminResults.onCreated(function(){
 
 })
 
-Template.kboAdminResults.helpers({
+Template.kboResults.helpers({
     kboNo() {
         return FlowRouter.getParam('kboNo')
     },
     results() {
         return KboResults.find({},{sort:{result:-1}})
-    },
-    schoolName(schoolId) {
-        return Schools.findOne({schoolId:schoolId}) ? Schools.findOne({schoolId:schoolId}).shortName : undefined
     }
 })
 
-Template.kboAdminResults.events({
+Template.kboResults.events({
     'change .grade'(event,template) {
         template.grade.set(event.target.value)
     },
