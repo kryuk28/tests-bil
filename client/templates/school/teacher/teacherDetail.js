@@ -33,12 +33,14 @@ Template.teacherDetail.events({
         let surname = template.find("[name=surname]").value
         let subjectId = template.find("[name=subjectId]").value
 
-        if (name && surname && subjectId) {
-            Meteor.call('Teacher.update',{
+        let teacherObject = {
                 name:name,
                 surname:surname,
                 subjectId:subjectId,
-            },teacher_id,function(err) {
+            }
+
+        if (name && surname && subjectId) {
+            Meteor.call('Teacher.update',teacherObject,teacher_id,function(err) {
                 if(err) {
                     alert(err.reason)
                 } else {

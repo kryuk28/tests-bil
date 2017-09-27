@@ -15,11 +15,11 @@ Meteor.methods({
             let school = Schools.findOne({userId:this.userId})
             if(school) {
                 let id = IdCounter.findOne()
-                id = id['studentId']+1
-                IdCounter.update({_id:id._id},{$set:{studentId:id}})
+                studentId = id['studentId']+1
+                IdCounter.update({_id:id._id},{$set:{studentId:studentId}})
 
                 let student = studentObject
-                student.studentId = id
+                student.studentId = studentId
                 student.schoolId = school.schoolId
 
                 Students.insert(student)
@@ -58,6 +58,19 @@ Meteor.methods({
                 student.schoolId = school.schoolId
                 Students.insert(student)
             }
+        } else {
+            throw new Meteor.Error('auth-error','School rights required.')
+        }
+    },
+    "Student.upgrade": function() {
+        if(Roles.userIsInRole(this.userId,'school')) {
+            let school = Schools.findOne({userId:this.userId})
+            Students.remove({grade:"11",schoolId:school.schoolId})
+            let students = Students.find({schoolId:school.schoolId}).fetch()
+            _.each(students,(student) => {
+                let grade = +student.grade+1+""
+                Students.update({_id:student._id},{$set:{grade:grade}})
+            })
         } else {
             throw new Meteor.Error('auth-error','School rights required.')
         }

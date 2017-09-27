@@ -5,11 +5,11 @@ Meteor.methods({
             let school = Schools.findOne({userId:this.userId})
             if(school) {
                 let id = IdCounter.findOne()
-                id = id['teacherId']+1
-                IdCounter.update({_id:id._id},{$set:{teacherId:id}})
+                teacherId = id['teacherId']+1
+                IdCounter.update({_id:id._id},{$set:{teacherId:teacherId}})
 
                 let teacher = teacherObject
-                teacher.teacherId = id
+                teacher.teacherId = teacherId
                 teacher.schoolId = school.schoolId
 
                 Teachers.insert(teacher)

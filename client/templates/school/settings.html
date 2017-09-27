@@ -1,0 +1,61 @@
+<template name="schoolSettings">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-horizontal">
+        <fieldset>
+
+        <!-- Form Name -->
+        <legend>Құпиясөзді өзгерту</legend>
+
+        <!-- Password input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="piCurrPass">Ескі құпиясөз</label>
+          <div class="col-md-6">
+            <input name="oldPassword" type="password" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="piNewPass">Жаңа құпиясөз</label>
+          <div class="col-md-6">
+            <input name="newPassword" type="password" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="bCancel"></label>
+          <div class="col-md-4">
+            <a id="cancel" href="/" class="btn btn-danger">Кері</a>
+            <button id="save" class="btn btn-success">Сақтау</button>
+          </div>
+        </div>
+        </fieldset>
+        </form>
+
+        <form class="form-horizontal">
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Оқушыларды сыныптан сыныпқа көшіру</legend>
+    <!-- Password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="piCurrPass">Құпиясөз</label>
+      <div class="col-md-6">
+        <input name="confirm" type="password" placeholder="" class="form-control input-md" required="">
+      </div>
+    </div>
+    <!-- Button (Double) -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="bCancel"></label>
+      <div class="col-md-4">
+        <button id="upgrade" class="btn btn-danger">Көшіру</button>
+      </div>
+    </div>
+    </fieldset>
+    </form>
+
+        </div>
+    </div>
+</template>

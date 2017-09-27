@@ -1,0 +1,43 @@
+<template name="btsKeys">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<h4>БТС-Жауап кілттері</h4>
+				{{> academicYear}}
+				<label>БТС</label>
+				<select class="form form-group" id="btsNo">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+				</select>
+				<a href="" class="btn btn-primary">Қосу</a>
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th></th>
+						<th>Вариант</th>
+						<th>Сынып</th>
+						<th>Күн</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each keys}}
+					<tr>
+						<td>{{math @index "+" 1}}</td>
+						<td>{{academicYear}}</td>
+						<td>{{variant}}</td>
+						<td>{{grade}}</td>
+						<td>{{day}}</td>
+						<td><a href="/admin/bts/keys/edit/{{_id}}">Өзгерту</a></td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+	
+</template>
