@@ -21,7 +21,12 @@
                         <th>Мұғалім ID</th>
                         <th>Аты-жөні</th>
                         <th>Пәні</th>
-                        <th>Өзгерту</th>
+                        <th>Лауазімі</th>
+                        <th style="text-align: center">Академ дәреже</th>
+                        <th style="text-align: center">Пед стаж</th>
+                        <th style="text-align: center">Категория</th>
+                        <th style="text-align: center">IELTS</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +36,14 @@
                         <td>{{teacherId}}</td>
                         <td>{{surname}} {{name}}</td>
                         <td>{{subjectName subjectId}}</td>
-                        <td><a href="/school/teacher/edit/{{_id}}">Өзгерту</a></td>
+                        <th>{{position}}</th>
+                        <td style="text-align: center">{{academicDegree }}</td>
+                        <td style="text-align: center">{{workExperience}}</td>
+                        <td style="text-align: center">{{category}}</td>
+                        <td style="text-align: center">{{ielts }}</td>
+                        <!--<td><a href="/school/teacher/edit/{{_id}}">Өзгерту</a></td> -->
+                        <button class="btn btn-primary" onclick="window.location.href='/school/teacher/edit/{{_id}}'" style="margin-left: 20%">
+                            Өзгерту</button>
                     </tr>
                     {{/each}}
                 </tbody>
