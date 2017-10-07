@@ -1,5 +1,9 @@
 import { Meteor } from 'meteor/meteor'
 
+Meteor.publish('allTeachers',function() {
+    return Teachers.find()
+})
+
 Meteor.publish('teachers', function(){
     if (this.userId) {
         let school = Schools.findOne({userId:this.userId})
