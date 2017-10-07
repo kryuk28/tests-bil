@@ -1,38 +1,87 @@
 <template name="teacherDetail">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            {{#if Template.subscriptionsReady}}
-              <h4>Мұғалім өзгерту</h4>
-              <div class="form-group">
-                <label for="name">Аты</label>
-                <input type="text" class="form-control" placeholder="Аты" name="name" value={{teacher.name}}>
-              </div>
-              <div class="form-group">
-                <label for="surname">Жөні</label>
-                <input type="text" class="form-control" placeholder="Жөні" name="surname" value="{{teacher.surname}}">
-              </div>
-              <div class="form-group">
-                <label for="exampleSelect1">Пәні</label>
-                <select class="form-control" name="subjectId">
-                  {{#each subjects}}
-                      <option value="{{subjectId}}" {{selector "subjectId" subjectId}}>{{name_kz}}</option>
-                  {{/each}}
-                </select>
-              </div>
-              <div class="form-group">
-                  <div class="form-inline">
-                      <div class="form-group">
-                          <button class="btn btn-warning" id="transfer">Трансфер тізіміне қосу</button>
-                      </div>
-                      <div class="form-group">
-                          <button class="btn btn-primary" id="save">Сақтау</button>
-                      </div>
-                  </div>
-              </div>
+        <h4 style="text-align: center">Мұғалім өзгерту</h4>
+        {{#if Template.subscriptionsReady}}
+            <div class="col-md-6 col-md-offset-3" style="margin-left: 0%">
 
-            {{else}}
+                <div class="form-group" style="width: 80%">
+                    <label for="name">Аты</label>
+                    <input type="text"  class="form-control" placeholder="Аты" name="name" value={{teacher.name}}>
+                </div>
+                <div class="form-group" style="width: 80%">
+                    <label for="surname">Жөні</label>
+                    <input type="text" class="form-control" placeholder="Жөні" name="surname" value="{{teacher.surname}}">
+                </div>
+                <div class="form-group" style="width: 80%">
+                    <label for="exampleSelect1">Пәні</label>
+                    <select class="form-control" name="subjectId">
+                        {{#each subjects}}
+                            <option value="{{subjectId}}" {{selector "subjectId" subjectId}}>{{name_kz}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-group" style="width: 80%">
+                    <label for="workExperience">Пед стаж</label>
+                    <input type="text" class="form-control" placeholder="Пед стаж" name="workExperience" value="{{teacher.workExperience}}">
+                </div>
+                <div class="form-group" style="width: 80%">
+                    <label for="ielts">IELTS</label>
+                    <input type="text" class="form-control" placeholder="IELTS" name="ielts" value="{{teacher.ielts}}">
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-md-offset-3" style="margin-left: 0%" >
+                <div class="form-group" style="width: 80%">
+                    <label for="position">Лауазімі</label>
+                    <select class="form-control" name="position">
+                        <option disabled="disabled" selected="selected" value="{{teacher.position}}">
+                            {{teacher.position}}</option>
+                        <option value="intern">intern</option>
+                        <option value="teacher">teacher</option>
+                        <option value="vice-principal">vice-principal</option>
+                        <option value="principal">principal</option>
+                    </select>
+                </div>
+                <div class="form-group" style="width: 80%">
+                    <label for="academicDegree">Академ дәрежесі</label>
+                    <select class="form-control" name="academicDegree" >
+                        <option disabled="disabled" selected="selected" value="{{teacher.academicDegree}}">
+                            {{teacher.academicDegree}}</option>
+                        <option value="bachelor">bachelor</option>
+                        <option value="master">master</option>
+                        <option value="doctor">doctor</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="width: 80%">
+                    <label for="academicDegree">Категория</label>
+                    <select class="form-control" name="category" >
+                        <option disabled="disabled" selected="selected" value="{{teacher.category}}">
+                            {{teacher.category}}</option>
+                        <option value="no category">no category</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                        <option value="highest">highest</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="form-inline" style="margin-left:15%">
+                    <div class="form-group">
+                        <button class="btn btn-warning" id="transfer">Трансфер тізіміне қосу</button>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" id="save">Сақтау</button>
+                    </div>
+                </div>
+            </div>
+
+        {{else}}
             <p>Loading...</p>
-            {{/if}}
-        </div>
+        {{/if}}
     </div>
 </template>
