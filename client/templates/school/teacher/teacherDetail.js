@@ -32,14 +32,24 @@ Template.teacherDetail.events({
         let name = template.find("[name=name]").value
         let surname = template.find("[name=surname]").value
         let subjectId = template.find("[name=subjectId]").value
+        let academicDegree = template.find("[name=academicDegree]").value
+        let workExperience = template.find("[name=workExperience]").value
+        let position = template.find("[name=position]").value
+        let ielts = template.find("[name=ielts]").value
+        let category = template.find("[name=category]").value
 
         let teacherObject = {
                 name:name,
                 surname:surname,
                 subjectId:subjectId,
+                academicDegree:academicDegree,
+                workExperience:workExperience,
+                ielts:ielts,
+                position:position,
+                category:category,
             }
 
-        if (name && surname && subjectId) {
+        if (name && surname && subjectId && academicDegree && workExperience && position || ielts || category) {
             Meteor.call('Teacher.update',teacherObject,teacher_id,function(err) {
                 if(err) {
                     alert(err.reason)
