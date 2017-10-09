@@ -1,16 +1,43 @@
-<template name="btsKeysEdit">
+<template name="btsKeysNew">
 	
 	<div class="row">
 		<div class="col-md-8">
-            {{#if Template.subscriptionsReady}}
-              <h4>Өзгерту: {{keys.academicYear}}/{{keys.quarter}}/{{keys.variant}}</h4>
-              
-              {{#if dayOne keys.day}}
+              <h4>БТС Жауап кілтін қосу</h4>
+              <div class="form-group">
+                  <div class="form-inline">
+                      <div class="form-group">
+                        <label for="exampleSelect1">БТС #</label>
+                        <select class="form-control" name="quarter" id="btsNo">
+                            <option value="1" {{selected "btsNo" "1"}}>1</option>
+                            <option value="2" {{selected "btsNo" "2"}}>2</option>
+                            <option value="3" {{selected "btsNo" "3"}}>3</option>
+                            <option value="4" {{selected "btsNo" "4"}}>4</option>
+                        </select>
+                        <label for="exampleSelect1">Күн #</label>
+                        <select class="form-control" name="day" id="day">
+                            <option value="1" {{selected "day" "1"}}>1</option>
+                            <option value="2" {{selected "day" "2"}}>2</option>
+                        </select>
+                        <label for="exampleSelect1">Сынып</label>
+                        <select class="form-control" name="grade" id="grade">
+                            <option value="7" {{selected "grade" "7"}}>7</option>
+                            <option value="8" {{selected "grade" "8"}}>8</option>
+                            <option value="9" {{selected "grade" "9"}}>9</option>
+                            <option value="10" {{selected "grade" "10"}}>10</option>
+                        </select>
+              </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Вариант</label>
+                <input type="text" class="form-control" name="variant">
+              </div>
+              {{#if dayOne}}
               	<div class="form-group">
                 <label for="name">Физика</label>
                 <input type="text" class="form-control" name="physics" value="{{keys.physics}}">
               </div>
-              {{#if gradeIsSeven keys.grade}}
+              {{#if gradeIsSeven}}
               	<div class="form-group">
                 		<label for="surname">Дүние жүзі тарихы</label>
                 		<input type="text" class="form-control" name="world_history" value="{{keys.world_history}}">
@@ -85,11 +112,7 @@
                 <input type="text" class="form-control" name="geography" value="{{keys.geography}}">
               </div>
               {{/if}}
-
               <button class="btn btn-primary" id="save">Сақтау</button>
-            {{else}}
-            <p>Loading...</p>
-            {{/if}}
         </div>
 	</div>
 </template>

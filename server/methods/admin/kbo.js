@@ -3,11 +3,8 @@ Meteor.methods({
         if (Roles.userIsInRole(this.userId,['admin']))
             KboCourses.insert(obj);
     },
-    addKboKey: function(obj) {
+    "KboKeys.Insert": function(obj) {
         if (this.userId && Roles.userIsInRole(this.userId, ['admin'])) {
-            obj.academicYear = AcademicYears.findOne({
-                now: true
-            }).academicYear;
             sameKey = KboKeys.findOne({
                 academicYear: obj.academicYear,
                 kboNo: obj.kboNo,
@@ -23,6 +20,16 @@ Meteor.methods({
         } else {
             throw new Meteor.Error(403, 'Access forbidden');
         }
+    },
+    "KboKeys.Update": function(id,obj) {
+        if (this.userId && Roles.userIsInRole(this.userId, ['admin'])) {
+            sameKey = KboKeys.findOne({_id:id});
+            if (sameKey) {
+                KboKeys.update({_id:id},{$set:obj})
+            }
+        } else {
+            throw new Meteor.Error(403, 'Access forbidden');
+        }  
     },
     removeKboCourse: function(_id) {
         if (Roles.userIsInRole(this.userId,['admin']))
@@ -99,7 +106,6 @@ Meteor.methods({
             }
         }
     },
-
     'SaveKboFinalists': function(grade,subject,finalists) {
         if (isNaN(finalists)) {
             throw new Meteor.Error('not-a-number','Enter proper value.');
@@ -130,7 +136,6 @@ Meteor.methods({
         } else {
             throw new Meteor.Error('access-denied','You do not have a permission.');
         }
-
     },
     'KboFinalists.update': function(studentId,schoolId,grade,subjectId) {
         if (Roles.userIsInRole(this.userId,['admin'])) {

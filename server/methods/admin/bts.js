@@ -115,27 +115,31 @@ var answerKeysCheck = function (answerKeys) {
 };
 
 Meteor.methods({
-    newBtsKeys: function (data) {
+    "BtsAnswerKeys.Insert": function (answerKeys) {
         if (!this.userId || !Roles.userIsInRole(this.userId, ['admin']))
             throw new Meteor.Error(401, 'Please login as administrator')
-            //checking recieved data to validness
-        academicYear = AcademicYears.findOne({
-            now: true
-        }).academicYear || ""
-        answerKeysCheck(data)
+        
             //check if same variant exists in database
         sameVariant = BtsAnswerKeys.findOne({
-            academicYear: academicYear,
-            grade: data.grade,
-            quarter: data.quarter,
-            day: data.day,
-            variant: data.variant
+            academicYear: answerKeys.academicYear,
+            grade: answerKeys.grade,
+            quarter: answerKeys.quarter,
+            day: answerKeys.day,
+            variant: answerKeys.variant
         })
         if (sameVariant)
             throw new Meteor.Error(322, 'Answer keys with same variant already exists please change variant')
-        data.academicYear = academicYear;
-        keysId = BtsAnswerKeys.insert(data)
+        keysId = BtsAnswerKeys.insert(answerKeys)
         return keysId;
+    },
+    "BtsAnswerKeys.Update": function(id,answerKeys) {
+        if (!this.userId || !Roles.userIsInRole(this.userId, ['admin']))
+            throw new Meteor.Error(401, 'Please login as administrator')
+        
+        sameVariant = BtsAnswerKeys.findOne({_id:id})
+        if (sameVariant) {
+            BtsAnswerKeys.update({_id:id},{$set:answerKeys})
+        }
     },
     // import one or set of answer keys of students
     'BtsResults.upload': function (btsNo, day, data) {
@@ -551,87 +555,6 @@ Meteor.methods({
                 })
             }
 
-        }
-    },
-    'BtsResults.calculateObjectives': function (quarter) {
-        var schools = Schools.find().fetch()
-        if (Roles.userIsInRole(this.userId, ['admin'])) {
-            _.each(schools, function (school) {
-                Modules.server.bts.calculateSchoolObjectives(quarter, school.schoolId)
-            })
-            Modules.server.bts.calculateGeneralObjectives(quarter)
-            Modules.server.bts.calculateObjectiveStats(quarter)
-        }
-    },
-    'ObjectivesList.insert': function (obj) {
-        if (Roles.userIsInRole(this.userId, ['admin'])) {
-            var academicYear = AcademicYears.findOne({
-                now: true
-            }).academicYear
-            obj.academicYear = academicYear
-            var sameObjective = BtsObjectivesList.findOne({
-                academicYear: academicYear,
-                quarter: obj.quarter,
-                grade: obj.grade,
-                objective: obj.objective
-            })
-            if (sameObjective)
-                BtsObjectivesList.update({
-                    _id: sameObjective._id
-                }, {
-                    $set: {
-                        variant1: obj.variant1,
-                        questions1: obj.questions1,
-                        variant2: obj.variant2,
-                        questions2: obj.questions2
-                    }
-                })
-            else
-                BtsObjectivesList.insert(obj)
-
-        }
-    },
-    'ObjectivesList.upload':function(rows) {
-        if (Roles.userIsInRole(this.userId, ['admin'])) {
-            var academicYear = AcademicYears.findOne({
-                now: true
-            }).academicYear
-            _.each(rows,function(row){
-                row.academicYear = academicYear
-            var sameObjective = BtsObjectivesList.findOne({
-                academicYear: academicYear,
-                quarter: row.quarter,
-                grade: row.grade,
-                objective: row.objective
-            })
-            if (sameObjective)
-                BtsObjectivesList.update({
-                    _id: sameObjective._id
-                }, {
-                    $set: {
-                        variant1: row.variant1,
-                        questions1: row.questions1,
-                        variant2: row.variant2,
-                        questions2: row.questions2
-                    }
-                })
-            else
-                BtsObjectivesList.insert(row)
-            })
-        }
-    },
-    'BtsObjectivesList.remove': function (_id) {
-        if (Roles.userIsInRole(this.userId, ['admin']))
-            BtsObjectivesList.remove({
-                _id: _id
-            })
-    },
-    
-    'importObjectives': function(rows) {
-        if (Roles.userIsInRole(this.userId, ['admin'])) {
-            _.each(rows,function(r) {
-                LessonObjectives.insert(r)
-            })
         }
     }
 });
