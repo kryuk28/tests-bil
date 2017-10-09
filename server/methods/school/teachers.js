@@ -19,7 +19,7 @@ Meteor.methods({
         }
     },
     "Teacher.update": function(teacherObject,teacher_id) {
-        if(Roles.userIsInRole(this.userId,'school')) {
+        if(Roles.userIsInRole(this.userId,['school', 'admin'])) {
             let teacher = Teachers.findOne({_id:teacher_id})
             if(teacher) {
                 Teachers.update({_id:teacher_id},{$set:teacherObject})
@@ -29,11 +29,21 @@ Meteor.methods({
         }
     },
     "Teacher.transfer": function(teacher_id) {
-        if(Roles.userIsInRole(this.userId,'school')) {
+        if(Roles.userIsInRole(this.userId,['school', 'admin'])) {
             let teacher = Teachers.findOne({_id:teacher_id})
             if(teacher) {
                 Teachers.remove({_id:teacher_id})
                 TeacherTransferList.insert(teacher)
+            }
+        } else {
+            throw new Meteor.Error('auth-error','School rights required.')
+        }
+    },
+    "Teacher.delete": function(teacher_id) {
+        if(Roles.userIsInRole(this.userId,['school', 'admin'])) {
+            let teacher = Teachers.findOne({_id:teacher_id})
+            if(teacher) {
+                Teachers.remove({_id:teacher_id})
             }
         } else {
             throw new Meteor.Error('auth-error','School rights required.')

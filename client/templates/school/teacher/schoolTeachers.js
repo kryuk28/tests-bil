@@ -14,8 +14,8 @@ Template.schoolTeachers.onCreated(function() {
 
 Template.schoolTeachers.helpers({
     teachers() {
-        let name_search = new RegExp(Template.instance().name_search.get())
-        let surname_search = new RegExp(Template.instance().surname_search.get())
+        let name_search = new RegExp(Template.instance().name_search.get(), 'i')
+        let surname_search = new RegExp(Template.instance().surname_search.get(), 'i')
         return Teachers.find({
             name:name_search,
             surname:surname_search,

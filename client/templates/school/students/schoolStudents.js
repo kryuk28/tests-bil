@@ -14,10 +14,10 @@ Template.schoolStudents.onCreated(function() {
 
 Template.schoolStudents.helpers({
     students() {
-        let name_search = new RegExp(Template.instance().name_search.get())
-        let surname_search = new RegExp(Template.instance().surname_search.get())
-        let grade_search = new RegExp(Template.instance().grade_search.get())
-        let division_search = new RegExp(Template.instance().division_search.get())
+        let name_search = new RegExp(Template.instance().name_search.get(), 'i')
+        let surname_search = new RegExp(Template.instance().surname_search.get(), 'i')
+        let grade_search = new RegExp(Template.instance().grade_search.get(), 'i')
+        let division_search = new RegExp(Template.instance().division_search.get(), 'i')
         return Students.find({
             name:name_search,
             surname:surname_search,

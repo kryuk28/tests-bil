@@ -23,4 +23,4 @@ Blaze.registerHelper("round", function(value,number) {
     return number.toFixed(value)
 })
 
-academicYear = new ReactiveVar('2016-2017')
+academicYear = new ReactiveVar('2017-2018')
