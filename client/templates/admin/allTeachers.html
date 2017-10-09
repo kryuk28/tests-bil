@@ -1,18 +1,29 @@
-<template name="schoolTeachers">
+<template name="allTeachers">
     <div class="row">
         <div class="col-md-12">
             <h4>Мұғалім тізімі</h4>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="form-inline">
                         <div class="form-group">
                             <label for="schoolId">Іздеу:</label>
                             <input type="text" class="form-control" id="search" placeholder="Аты" name="name_search">
                             <input type="text" class="form-control" id="search" placeholder="Жөні" name="surname_search">
+
+                            <select class="form-control" style="width:15%" name="schoolId_select" id="select">
+                                <option value="">Select School</option>
+                                {{#each schools}}
+                                    <option value="{{schoolId}}" >{{shortName}}</option>
+                                {{/each}}
+                            </select>
+
+
                         </div>
+
                     </div>
                 </div>
             </div>
+
             {{#if Template.subscriptionsReady}}
             <table class="table table-striped">
                 <thead>
@@ -20,13 +31,14 @@
                         <th>#</th>
                         <th>Мұғалім ID</th>
                         <th>Аты-жөні</th>
-                        <th>Пәні</th>
+                        <th style="width:13%">Пәні</th>
+                        <th>Академ дәреже</th>
+                        <th style="width:7.5%; text-align:center">Пед стаж</th>
                         <th>Лауазімі</th>
-                        <th style="text-align: center">Академ дәреже</th>
-                        <th style="text-align: center">Пед стаж</th>
-                        <th style="text-align: center">Категория</th>
-                        <th style="text-align: center">IELTS</th>
-                        <th></th>
+                        <th style="width:7.5%; text-align:center">IELTS</th>
+                        <!--<th style="text-align: center">Категория</th> -->
+                        <th style="width:20%; text-align:center">Мектеп</th>
+                        <th>Өзгерту</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,14 +48,14 @@
                         <td>{{teacherId}}</td>
                         <td>{{surname}} {{name}}</td>
                         <td>{{subjectName subjectId}}</td>
+                        <td>{{academicDegree }}</td>
+                        <th style="text-align:center">{{workExperience}}</th>
                         <th>{{position}}</th>
-                        <td style="text-align: center">{{academicDegree }}</td>
-                        <td style="text-align: center">{{workExperience}}</td>
-                        <td style="text-align: center">{{category}}</td>
-                        <td style="text-align: center">{{ielts }}</td>
-                        <!--<td><a href="/school/teacher/edit/{{_id}}">Өзгерту</a></td> -->
-                        <button class="btn btn-primary" onclick="window.location.href='/school/teacher/edit/{{_id}}'" style="margin-left: 20%">
-                            Өзгерту</button>
+                        <td style="text-align:center">{{ielts }}</td>
+                        <!--<td style="text-align: center">{{category}}</td> -->
+                        <td>{{schoolName schoolId }}</td>
+                        <!--<button class="btn-default"><a href="/admin/allTeachers/edit/{{_id}}">Өзгерту</a></button> -->
+                        <button class="btn btn-primary" onclick="window.location.href='/admin/allTeachers/edit/{{_id}}'">Өзгерту</button>
                     </tr>
                     {{/each}}
                 </tbody>
