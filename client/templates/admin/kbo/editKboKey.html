@@ -2,14 +2,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
-				<h4>КБО-Жауап кілттері</h4>
-				{{> academicYear}}
-				<label>КБО</label>
-				<select class="form form-group" id="kboNo">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-				</select>
+				<h4>КБО-Жауап кілтін өзгерту</h4>
 			</div>
 			<div class="row">
 				<div class="form-group">
@@ -17,46 +10,25 @@
                       <div class="form-group">
                         <label for="exampleSelect1">KБО #</label>
                         <select class="form-control" name="kboNo" id="kboNo">
-		<option value="1" >1</option>
-		<option value="2" >2</option>
-		<option value="3" >3</option>
+		                    <option value="1" {{selected key.kboNo "1"}}>1</option>
+		                    <option value="2" {{selected key.kboNo "2"}}>2</option>
+		                    <option value="3" {{selected key.kboNo "3"}}>3</option>
                         </select>
                         <label for="exampleSelect1"> Пән #</label>
                         <select class="form-control" name="subjectId" id="subjectId">
                             {{#each subjects}}
-                            	<option value="{{subjectId}}" >{{name}}</option>
+                            	<option value="{{subjectId}}" {{selected key.subjectId subjectId }}>{{name}}</option>
                             {{/each}}
                         </select>
                         <label for="exampleSelect1">Вариант:</label>
-                        <input class="form-control" name="variant" id="variant" length=50/>
+                        <input class="form-control" name="variant" id="variant" size="4" value="{{key.variant}}"/>
                         <label for="exampleSelect1">Жауап кілті:</label>
-                        <input class="form-control" name="keys" id="keys" length=50/>
-                        <a class="btn btn-primary" id="save">Қосу</a>
+                        <input class="form-control" name="keys" id="keys" size="50" value="{{key.keys}}"/>
+                        <a class="btn btn-primary" id="save">Сақтау</a>
               </div>
                   </div>
               </div>
 			</div>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th></th>
-						<th>Вариант</th>
-						<th>Пән</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each keys}}
-					<tr>
-						<td>{{math @index "+" 1}}</td>
-						<td>{{academicYear}}</td>
-						<td>{{variant}}</td>
-						<td>{{subjectName subjectId}}</td>
-						<td><a href="/admin/kbo/keys/edit/{{_id}}">Өзгерту</a></td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
 		</div>
 		
 	</div>

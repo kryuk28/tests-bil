@@ -14,6 +14,13 @@ Meteor.publish('kboKeys', function(academicYear, kboNo){
 	return this.ready()
 })
 
+Meteor.publish("kboKey",function (id) {
+	if (this.userId) {
+		return KboKeys.find({_id: id})
+	}
+	return this.ready()
+})
+
 Meteor.publish("btsKey", function(keyId) {
 	if (this.userId) {
 		return BtsAnswerKeys.find({_id:keyId})

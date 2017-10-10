@@ -10,20 +10,24 @@ Template.editKboKey.onCreated(function() {
         localStorage.setItem("kboNo","1")
         template.kboNo = new ReactiveVar("1")
     }
-    template.subscribe("subjects")
+
     template.subscribe("kboSubjects")
-    template.autorun(() => {
-        template.subscribe("kboKeys",academicYear.get(), template.kboNo.get())
-    })
+    template.subscribe("kboKeys",academicYear.get(), template.kboNo.get())
+    template.subscribe("kboKey",FlowRouter.getParam("id"))
 
 })
 
 Template.editKboKey.helpers({
-    keys() {
-        return KboKeys.find({},{sort:{variant:1}})
+    key() {
+        return KboKeys.findOne()
     },
     subjects() {
         return KboCourses.find()
+    },
+    selected(a,b) {
+        if (a==b) {
+            return "selected"
+        }
     }
 })
 
@@ -43,12 +47,13 @@ Template.editKboKey.events({
             keys: template.find("[name=keys]").value,
         }
 
-        Meteor.call("KboKeys.Insert",answerKey,function(err) {
+        Meteor.call("KboKeys.Update",FlowRouter.getParam("id"),answerKey,function(err) {
             if (err) {
                 alert(err.reason)
             } else {
-	    	alert("Сақталды")
-	    }
+                alert("Сақталды")
+            }
         })
+        alert("Идет пересчет рейтинга школ")
     }
 })

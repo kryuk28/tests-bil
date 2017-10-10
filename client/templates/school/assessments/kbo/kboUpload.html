@@ -1,0 +1,45 @@
+<template name="kboUpload">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="exampleSelect1">KБО #</label>
+                        <select class="form-control" name="kboNo" id="kboNo">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <input type="file" accept="text/plain" class="form-control" id="file">
+                        <a class="btn btn-primary" id="save">Сақтау</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Аты</th>
+                        <th>Жөні</th>
+                        <th>Вариант</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each results}}
+                    <tr>
+                        <td>{{studentId}}</td>
+                        <td>{{name}}</td>
+                        <td>{{surname}}</td>
+                        <td>{{variant}}</td>
+                        <td>{{keys}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
