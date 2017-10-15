@@ -27,7 +27,7 @@ export const calculateRating = (academicYear,kboNo,schoolId) => {
                 _.each(results,function(result) {
                     let answerKey = KboKeys.findOne({academicYear:academicYear,kboNo:kboNo,variant:result.variant})
                     if (answerKey) {
-                        let amountOfQuestions = parseAnswerKey(answerKey.keys)
+                        let amountOfQuestions = parseAnswerKey(answerKey.keys)*2
                         gradeRating[subject.subjectId]+=(100*result.result)/amountOfQuestions.length;
                         gradeRating.total+= (100*result.result)/amountOfQuestions.length;
 
@@ -57,7 +57,7 @@ export const calculateRating = (academicYear,kboNo,schoolId) => {
             _.each(results,function(result) {
                 let answerKey = KboKeys.findOne({academicYear:academicYear,kboNo:kboNo,variant:result.variant})
                 if (answerKey) {
-                    let amountOfQuestions = parseAnswerKey(answerKey.keys)
+                    let amountOfQuestions = parseAnswerKey(answerKey.keys)*2
                     generalRating[subject.subjectId]+=(100*result.result)/amountOfQuestions.length;
                     generalRating.total+=(100*result.result)/amountOfQuestions.length;
                 }

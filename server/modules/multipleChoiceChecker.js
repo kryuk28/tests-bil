@@ -1,5 +1,5 @@
 /*
-* возвращает ответы теста в виде массива
+* возвращает ответы для теста в виде массива символов
 * */
 export const parseAnswerKey = (keys) => {
     let keysArray = [];
@@ -33,16 +33,29 @@ export const parseAnswerKey = (keys) => {
 export const check = (ansKeys,studentKeys) => {
     let s=0;
     for (let i=0;i<ansKeys.length;i++) {
-        let p=1
+
         let stKeys=studentKeys.slice(i*5,i*5+5)
         stKeys = stKeys.replace(/\s/g,'').split("")
-        if (stKeys.length == ansKeys[i].length) {
-            for(let j=0; j<stKeys.length;j++) {
-                if (ansKeys[i][0] != "+" && !ansKeys[i].includes(stKeys[j]))
-                    p = 0
+
+        let p=0
+        let sum=0
+
+        if (ansKeys[i].length == 5) {
+            p=2
+        } else if (stKeys.length <= ansKeys[i].length) {
+            for(let j=0;j<stKeys.length;j++) {
+                if(ansKeys[i].includes(stKeys[j]))
+                    sum+=1
             }
-        } else {
-            p=0
+            if(sum == ansKeys[i].length) {
+                p=2
+                console.log("i am here ", s, ansKeys[i].length, p)
+            } else if(sum > 1 && s < ansKeys[i].length) {
+                p=1
+            } else {
+                p=0
+            }
+
         }
         s+=p;
     }

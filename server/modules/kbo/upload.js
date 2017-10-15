@@ -5,7 +5,7 @@ import { parseAnswerKey } from "../multipleChoiceChecker";
 * */
 export const upload = (academicYear,kboNo,schoolId,rows) => {
     _.each(rows,(row) => {
-        let student = Students.findOne({studentId:parseInt(row.studentId)})
+        let student = Students.findOne({studentId:parseInt(row.studentId)});
 
         let answerKey = KboKeys.findOne({
             academicYear: academicYear,

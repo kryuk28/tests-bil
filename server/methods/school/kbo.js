@@ -1,6 +1,9 @@
 import { upload } from "../../modules/kbo/upload";
 import { calculateRating } from "../../modules/kbo/rating";
 
+import { parseAnswerKey, check } from "../../modules/multipleChoiceChecker";
+
+
 Meteor.methods({
     'KboResults.Upload':function(academicYear,kboNo,rows){
         kbo = Configs.findOne({
@@ -22,5 +25,8 @@ Meteor.methods({
             calculateRating(academicYear,kboNo,school.schoolId)
         }
 
+    },
+    "checker": function (keys,ans) {
+        console.log(check(parseAnswerKey(keys),ans))
     }
 });
