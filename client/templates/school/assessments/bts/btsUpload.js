@@ -1,42 +1,46 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import './kboUpload.html';
+import './btsUpload.html';
 
-Template.kboUpload.onCreated(function() {
+Template.btsUpload.onCreated(function() {
     let template = this
     template.results = new ReactiveVar([])
-    template.kboNo = new ReactiveVar("1")
-    template.subscribe("kboSubjects")
-    template.subscribe("kboKeys",academicYear.get(),template.kboNo.get())
+    template.errors = new ReactiveVar(false)
+    template.btsNo = new ReactiveVar("1")
+    template.day = new ReactiveVar("1")
+    template.subscribe("btsKeys",academicYear.get(),template.btsNo.get())
 })
 
-Template.kboUpload.helpers({
+Template.btsUpload.helpers({
     results() {
         return Template.instance().results.get()
     }
 });
 
-Template.kboUpload.events({
+Template.btsUpload.events({
     "click #save"(event,template) {
         event.preventDefault()
-        if(template.results.get().length > 0) {
-            UIBlock.block("Жүктелуде...")
-            Meteor.call("KboResults.Upload",academicYear.get(),template.kboNo.get(),template.results.get(),function (err) {
+        if(template.results.get().length > 0 && !template.errors.get()) {
+            UIBlock.block('Жүктелуде...');
+            Meteor.call("BtsResults.Upload",academicYear.get(),template.btsNo.get(),template.day.get(),template.results.get(),function (err) {
                 if (err) {
-                    UIBlock.unblock()
+                    UIBlock.unblock();
                     alert(err.reason)
                 } else {
                     template.results.set([])
                     UIBlock.unblock();
                     alert("Сақталды")
                 }
-            })
+            });
             return
         }
-        alert("Файл таңдалмады")
+        alert("Файл таңдалмады немесе қателер табылды")
     },
-    "change #kboNo"(event,template) {
-        template.kboNo.set(event.target.value)
+    "change #btsNo"(event,template) {
+        template.btsNo.set(event.target.value)
+    },
+    "change #day"(event,template) {
+        template.day.set(event.target.value)
     },
     "change #file"(event,template) {
         function handleFiles(files) {
@@ -73,7 +77,14 @@ Template.kboUpload.events({
                     variant: txtlines[i].slice(8,12),
                     name: txtlines[i].slice(12,29),
                     surname: txtlines[i].slice(29,39),
-                    keys: txtlines[i].slice(39)
+                    keys: txtlines[i].slice(39),
+                    isValid: true
+                }
+
+                let variant = BtsAnswerKeys.findOne({variant: studObj.variant});
+                if (!variant) {
+                    studObj.isValid = false
+                    template.errors.set(true)
                 }
                 res.push(studObj);
                 }

@@ -12,18 +12,14 @@ Template.studentDetail.helpers({
     subjects() {
         return KboCourses.find({},{sort:{subjectId:1}})
     },
-    isOlympiadStudent(studentId,subjectId) {
-        let student = Students.findOne({studentId:studentId})
-        if (student && student.olympiad == subjectId)
-            return 'selected'
-    },
+
     student() {
         return Students.findOne({_id:FlowRouter.getParam("_id")})
     },
     selector(identificator,value) {
         let student = Students.findOne({_id:FlowRouter.getParam("_id")})
-        if (student) {
-            return student[identificator] == value ? "selected" : ""
+        if (student && student[identificator] == value) {
+            return "selected"
         }
     }
 });

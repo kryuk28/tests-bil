@@ -32,9 +32,6 @@ Template.btsKeysNew.helpers({
     dayOne(day) {
     	return "1"==Template.instance().day.get()
     },
-    gradeIsSeven(grade) {
-        return "7"==Template.instance().grade.get()
-    },
     selected(id,val) {
             let obj = {
                 "btsNo": Template.instance().btsNo.get(),
@@ -70,26 +67,23 @@ Template.btsKeysNew.events({
         }
 
         if (template.day.get()=="1") {
-            answerKeys["physics"] = template.find("[name=physics]").value
-            if (template.grade.get()=="7") {
-                answerKeys["world_history"] = template.find("[name=world_history]").value
-            } else {
-                answerKeys["chemistry"] = template.find("[name=chemistry]").value
-            }
-            answerKeys["biology"] = template.find("[name=biology]").value
-            answerKeys["computer"] = template.find("[name=computer]").value
-            answerKeys["kazakh_kazakh"] = template.find("[name=kazakh_kazakh]").value
-            answerKeys["literature_kazakh"] = template.find("[name=literature_kazakh]").value
-            answerKeys["kazakh_russian"] = template.find("[name=kazakh_russian]").value
-            answerKeys["literature_russian"] = template.find("[name=literature_russian]").value
-            answerKeys["russian"] = template.find("[name=russian]").value
-        } else {
             answerKeys["algebra"] = template.find("[name=algebra]").value
             answerKeys["geometry"] = template.find("[name=geometry]").value
-            answerKeys["english"] = template.find("[name=english]").value
+            answerKeys["computer"] = template.find("[name=computer]").value
             answerKeys["turkish"] = template.find("[name=turkish]").value
-            answerKeys["history"] = template.find("[name=history]").value
+            answerKeys["world_history"] = template.find("[name=world_history]").value
+            answerKeys["kazakh_history"] = template.find("[name=kazakh_history]").value
             answerKeys["geography"] = template.find("[name=geography]").value
+        } else {
+            answerKeys["physics"] = template.find("[name=physics]").value
+            answerKeys["chemistry"] = template.find("[name=chemistry]").value
+            answerKeys["biology"] = template.find("[name=biology]").value
+            answerKeys["english"] = template.find("[name=english]").value
+            answerKeys["kazakh_kaz"] = template.find("[name=kazakh_kaz]").value
+            answerKeys["kazakh_literature_kaz"] = template.find("[name=kazakh_literature_kaz]").value
+            answerKeys["kazakh_rus"] = template.find("[name=kazakh_rus]").value
+            answerKeys["kazakh_literature_rus"] = template.find("[name=kazakh_literature_rus]").value
+            answerKeys["russian"] = template.find("[name=russian]").value
         }
         Meteor.call("BtsAnswerKeys.Insert", answerKeys,function(err) {
             if (err) {

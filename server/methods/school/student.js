@@ -32,6 +32,8 @@ Meteor.methods({
         if(Roles.userIsInRole(this.userId,'school')) {
             let student = Students.findOne({_id:student_id})
             if(student) {
+                console.log(studentObject)
+                console.log(student_id)
                 Students.update({_id:student_id},{$set:studentObject})
             }
         } else {
