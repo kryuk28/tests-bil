@@ -28,26 +28,37 @@ export const calculateRating = (academicYear,btsNo,schoolId) => {
     _.each(grades,(grade) => {
         let gradeRating = calculateBtsRatingForGrade(academicYear,btsNo,schoolId,grade)
 
-        totalRating.algebra += (gradeRating.algebra || 0) / records.length
-        totalRating.geometry += (gradeRating.geometry || 0) / records.length
-        totalRating.computer += (gradeRating.computer || 0) / records.length
-        totalRating.turkish += (gradeRating.turkish || 0) / records.length
-        totalRating.world_history += (gradeRating.world_history || 0) / records.length
-        totalRating.kazakh_history += (gradeRating.kazakh_history || 0) / records.length
-        totalRating.geography += (gradeRating.geography || 0) / records.length
-        totalRating.physics += (gradeRating.physics || 0) / records.length
-        totalRating.chemistry += (gradeRating.chemistry || 0) / records.length
-        totalRating.biology += (gradeRating.biology || 0) / records.length
-        totalRating.english += (gradeRating.english || 0) / records.length
-        totalRating.kazakh += (gradeRating.kazakh || 0) / records.length
-        totalRating.kazakh_literature += (gradeRating.kazakh_literature || 0) / records.length
-        totalRating.russian += (gradeRating.russian || 0) / records.length
-        totalRating.total += (gradeRating.total || 0) / records.length
+        totalRating.algebra += (gradeRating.algebra || 0) / 4
+        totalRating.geometry += (gradeRating.geometry || 0) / 4
+        totalRating.computer += (gradeRating.computer || 0) / 4
+        totalRating.turkish += (gradeRating.turkish || 0) / 4
+        totalRating.world_history += (gradeRating.world_history || 0) / 4
+        totalRating.kazakh_history += (gradeRating.kazakh_history || 0) / 4
+        totalRating.geography += (gradeRating.geography || 0) / 4
+        totalRating.physics += (gradeRating.physics || 0) / 4
+        totalRating.chemistry += (gradeRating.chemistry || 0) / 4
+        totalRating.biology += (gradeRating.biology || 0) / 4
+        totalRating.english += (gradeRating.english || 0) / 4
+        totalRating.kazakh += (gradeRating.kazakh || 0) / 4
+        totalRating.kazakh_literature += (gradeRating.kazakh_literature || 0) / 4
+        totalRating.russian += (gradeRating.russian || 0) / 4
+        totalRating.total += (gradeRating.total || 0) / 4
     })
 
     // insert total rating to db
+    var sameSchoolRating = BtsRatings.findOne({
+        btsNo: btsNo,
+        schoolId: schoolId,
+        academicYear: academicYear,
+        grade: 'all'
+    })
 
-    
+    if (sameSchoolRating) {
+        BtsRatings.update({_id:sameSchoolRating._id},{$set:totalRating})
+    } else {
+        BtsRatings.insert(totalRating)
+    }
+
 }
 
 calculateBtsRatingForGrade = (academicYear,btsNo,schoolId,grade) => {
@@ -96,6 +107,19 @@ calculateBtsRatingForGrade = (academicYear,btsNo,schoolId,grade) => {
     })
 
     // insert rating to db
+    var sameRating = BtsRatings.findOne({
+        btsNo: btsNo,
+        academicYear: academicYear,
+        schoolId: schoolId,
+        grade: grade
+    })
+    if (!sameRating)
+        BtsRatings.insert(ratingObj)
+    else {
+        BtsRatings.update({_id:sameRating._id}, {
+            $set: ratingObj
+        })
+    }
 
     return ratingObj
 

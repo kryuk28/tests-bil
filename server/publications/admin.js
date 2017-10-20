@@ -27,3 +27,9 @@ Meteor.publish("btsKey", function(keyId) {
 	}
 	return this.ready()
 })
+Meteor.publish("configs",function() {
+	if (this.userId) {
+		return Configs.find()
+	}
+	return this.ready()
+})

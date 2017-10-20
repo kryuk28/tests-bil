@@ -33,7 +33,7 @@
             </div>
         </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <h4>Мектеп тізімі</h4>
             {{#if Template.subscriptionsReady}}
             <table class="table table-striped">
@@ -41,7 +41,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Мектеп аты</th>
-                        <th>Құпиясөзді жаңарту</th>
+                        <th>Құпиясөз</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,14 +58,14 @@
             <p>Loading...</p>
             {{/if}}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h4>Пәндер</h4>
             {{#if Template.subscriptionsReady}}
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Пән</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,6 +80,92 @@
             {{else}}
                 <p>Loading...</p>
             {{/if}}
+        </div>
+        <div class="col-md-3">
+            <h4>Жүктеу</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Пән</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>БТС-1</td>
+                            <td>
+                                <select name="bts1" id="bts1">
+                                    <option value="enabled" {{selected "btsUpload" "1" "enabled"}}>Ашық</option>
+                                    <option value="disabled" {{selected "btsUpload" "1" "disabled"}}>Жабық</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>БТС-2</td>
+                            <td>
+                                <select name="bts2" id="bts2">
+                                    <option value="enabled" {{selected "btsUpload" "2" "enabled"}}>Ашық</option>
+                                    <option value="disabled" {{selected "btsUpload" "2" "disabled"}}>Жабық</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>БТС-3</td>
+                            <td>
+                                <select name="bts3" id="bts3">
+                                    <option value="enabled" {{selected "btsUpload" "3" "enabled"}}>Ашық</option>
+                                    <option value="disabled" {{selected "btsUpload" "3" "disabled"}}>Жабық</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>БТС-4</td>
+                            <td>
+                                <select name="bts4" id="bts4">
+                                    <option value="enabled" {{selected "btsUpload" "4" "enabled"}}>Ашық</option>
+                                    <option value="disabled" {{selected "btsUpload" "4" "disabled"}}>Жабық</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr><td></td><td></td></tr>
+                        <tr>
+                            <td>КБО-1</td>
+                            <select name="kbo1" id="kbo1">
+                                <option value="enabled" {{selected "kboUpload" "1" "enabled"}}>Ашық</option>
+                                <option value="disabled" {{selected "kboUpload" "1" "disabled"}}>Жабық</option>
+                            </select>
+                        </tr>
+                        <tr>
+                            <td>КБО-2</td>
+                            <select name="kbo2" id="kbo2">
+                                <option value="enabled" {{selected "kboUpload" "2" "enabled"}}>Ашық</option>
+                                <option value="disabled" {{selected "kboUpload" "2" "disabled"}}>Жабық</option>
+                            </select>
+                        </tr>
+                        <tr>
+                            <td>КБО-3</td>
+                            <select name="kbo3" id="kbo3">
+                                <option value="enabled" {{selected "kboUpload" "3" "enabled"}}>Ашық</option>
+                                <option value="disabled" {{selected "kboUpload" "3" "disabled"}}>Жабық</option>
+                            </select>
+                        </tr>
+                        <tr><td></td><td></td></tr>
+                        <tr>
+                            <td>TAT-1</td>
+                            <select name="tat1" id="tat1">
+                                <option value="enabled" {{selected "tatUpload" "1" "enabled"}}>Ашық</option>
+                                <option value="disabled" {{selected "tatUpload" "1" "disabled"}}>Жабық</option>
+                            </select>
+                        </tr>
+                        <tr>
+                            <td>TAT-2</td>
+                            <select name="tat2" id="tat2">
+                                <option value="enabled" {{selected "tatUpload" "2" "enabled"}}>Ашық</option>
+                                <option value="disabled" {{selected "tatUpload" "2" "disabled"}}>Жабық</option>
+                            </select>
+                        </tr>
+                    </tbody>
+                </table>
         </div>
     </div>
     </div> <!-- /container -->

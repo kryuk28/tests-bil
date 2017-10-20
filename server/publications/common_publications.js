@@ -14,7 +14,7 @@ Meteor.publish('schools',function() {
 
 Meteor.publish('btsRating',function(academicYear,grade,btsNo) {
     if (this.userId) {
-        let cursor = BtsRatings.find({academicYear:academicYear,grade:grade,quarter:btsNo})
+        let cursor = BtsRatings.find({academicYear:academicYear,grade:grade,btsNo:btsNo})
         return cursor
     }
     return this.ready()
@@ -23,7 +23,7 @@ Meteor.publish('btsRating',function(academicYear,grade,btsNo) {
 Meteor.publish('btsResults',function(academicYear,grade,btsNo) {
     if (this.userId) {
         let school = Schools.findOne({userId:this.userId})
-        let cursor = BtsResults.find({academicYear:academicYear,grade:grade,quarter:btsNo,schoolId:school.schoolId})
+        let cursor = BtsResults.find({academicYear:academicYear,grade:grade,btsNo:btsNo,schoolId:school.schoolId})
         return cursor
     }
     return this.ready()
