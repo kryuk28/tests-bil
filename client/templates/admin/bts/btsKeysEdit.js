@@ -10,8 +10,8 @@ Template.btsKeysEdit.helpers({
     keys() {
         return BtsAnswerKeys.findOne({_id:FlowRouter.getParam("id")})
     },
-    dayOne(day) {
-    	return day=="1"
+    dayTwo(day) {
+    	return day=="2"
     }
 })
 
@@ -27,7 +27,7 @@ Template.btsKeysEdit.events({
             
         }
 
-        if (keys.day=="1") {
+        if (keys.day=="2") {
             answerKeys["algebra"] = template.find("[name=algebra]").value
             answerKeys["geometry"] = template.find("[name=geometry]").value
             answerKeys["computer"] = template.find("[name=computer]").value

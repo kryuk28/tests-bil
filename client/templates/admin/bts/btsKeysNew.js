@@ -29,8 +29,8 @@ Template.btsKeysNew.onCreated(function() {
 })
 
 Template.btsKeysNew.helpers({
-    dayOne(day) {
-    	return "1"==Template.instance().day.get()
+    dayTwo() {
+    	return "2"==Template.instance().day.get()
     },
     selected(id,val) {
             let obj = {
@@ -66,7 +66,7 @@ Template.btsKeysNew.events({
             variant: template.find("[name=variant]").value
         }
 
-        if (template.day.get()=="1") {
+        if (template.day.get()=="2") {
             answerKeys["algebra"] = template.find("[name=algebra]").value
             answerKeys["geometry"] = template.find("[name=geometry]").value
             answerKeys["computer"] = template.find("[name=computer]").value
@@ -92,6 +92,6 @@ Template.btsKeysNew.events({
                 alert("Сақталды!")
             }
         })
-        //FlowRouter.redirect("/admin/bts/keys")
+        FlowRouter.redirect("/admin/bts/keys")
     }
 })

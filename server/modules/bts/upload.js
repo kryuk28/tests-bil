@@ -29,9 +29,9 @@ export const upload = (academicYear,btsNo,day,schoolId,results) => {
             division: student.division,
         }
 
-        if (day == 1) {
-            studentRecord.variant_day_1 = answerKey.variant
-            studentRecord.day_1_keys = studentObj.keys
+        if (day == 2) {
+            studentRecord.variant_day_2 = answerKey.variant
+            studentRecord.day_2_keys = studentObj.keys
 
             studentRecord["algebra"] = check(parseAnswerKey(answerKey.algebra), studentObj.keys.slice(0,10))
             studentRecord["geometry"] = check(parseAnswerKey(answerKey.geometry), studentObj.keys.slice(10,20))
@@ -41,10 +41,10 @@ export const upload = (academicYear,btsNo,day,schoolId,results) => {
             studentRecord["kazakh_history"] = check(parseAnswerKey(answerKey.kazakh_history), studentObj.keys.slice(60,70))
             studentRecord["geography"] = check(parseAnswerKey(answerKey.geography), studentObj.keys.slice(70,80))
 
-            studentRecord["day_1_total"] = studentRecord["algebra"] + studentRecord["geometry"] + studentRecord["computer"] + studentRecord["turkish"] + studentRecord["world_history"] +studentRecord["kazakh_history"] + studentRecord["geography"]
+            studentRecord["day_2_total"] = studentRecord["algebra"] + studentRecord["geometry"] + studentRecord["computer"] + studentRecord["turkish"] + studentRecord["world_history"] +studentRecord["kazakh_history"] + studentRecord["geography"]
         } else {
-            studentRecord.variant_day_2 = answerKey.variant
-            studentRecord.day_2_keys = studentObj.keys
+            studentRecord.variant_day_1 = answerKey.variant
+            studentRecord.day_1_keys = studentObj.keys
 
             answerKeys["physics"] = check(parseAnswerKey(answerKey.physics), studentObj.keys.slice(0,10))
             answerKeys["chemistry"] = check(parseAnswerKey(answerKey.chemistry), studentObj.keys.slice(10,20))
