@@ -49,7 +49,7 @@ export const check = (ansKeys,studentKeys) => {
             }
             if(sum == ansKeys[i].length) {
                 p=2
-            } else if(s < ansKeys[i].length) {
+            } else if(sum < ansKeys[i].length) {
                 if (ansKeys[i].length == 2 && sum == 1) {
                     p=1
                 } else if (sum > 1) {

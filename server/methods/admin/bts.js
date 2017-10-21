@@ -28,6 +28,10 @@ Meteor.methods({
             let config = Configs.findOne({_id:"btsUpload"})
             if (config[sameVariant.quarter] == "enabled") {
                 let schools = Schools.find().fetch()
+                //
+                // здесь должны пересчитать результаты для учеников
+                // recheck(sameVariant.academicYear,sameVariant.quarter,sameVariant:grade)
+                //
                 _.each(schools,(school) => {
                     calculateRating(sameVariant.academicYear,sameVariant.quarter,school.schoolId)
                 })
