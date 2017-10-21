@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a916f611-83a1-46fa-af82-015700279167" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/methods/admin/bts.js" afterPath="$PROJECT_DIR$/server/methods/admin/bts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/modules/multipleChoiceChecker.js" afterPath="$PROJECT_DIR$/server/modules/multipleChoiceChecker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/common/bts/btsRating.html" afterPath="$PROJECT_DIR$/client/templates/common/bts/btsRating.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -72,11 +71,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="multipleChoiceChecker.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="multipleChoiceChecker.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/modules/multipleChoiceChecker.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="482">
               <caret line="51" column="25" lean-forward="false" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="btsRating.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/templates/common/bts/btsRating.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="58" column="38" lean-forward="false" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -171,7 +180,6 @@
         <option value="$PROJECT_DIR$/client/templates/admin/bts/btsKeysNew.js" />
         <option value="$PROJECT_DIR$/server/modules/bts/rating.js" />
         <option value="$PROJECT_DIR$/server/publications/common_publications.js" />
-        <option value="$PROJECT_DIR$/client/templates/common/bts/btsRating.html" />
         <option value="$PROJECT_DIR$/client/templates/common/bts/btsResults.html" />
         <option value="$PROJECT_DIR$/server/modules/bts/upload.js" />
         <option value="$PROJECT_DIR$/lib/routes/admin/routes.js" />
@@ -182,6 +190,7 @@
         <option value="$PROJECT_DIR$/client/templates/admin/adminMainPage.js" />
         <option value="$PROJECT_DIR$/server/methods/admin/bts.js" />
         <option value="$PROJECT_DIR$/server/modules/multipleChoiceChecker.js" />
+        <option value="$PROJECT_DIR$/client/templates/common/bts/btsRating.html" />
       </list>
     </option>
   </component>
@@ -221,6 +230,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,6 +255,21 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tests" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tests" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="bts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tests" type="b2602c69:ProjectViewProjectNode" />
@@ -299,7 +324,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -373,12 +397,13 @@
       <workItem from="1508391533272" duration="7143000" />
       <workItem from="1508505222006" duration="10792000" />
       <workItem from="1508561651963" duration="1026000" />
-      <workItem from="1508564349477" duration="19000" />
+      <workItem from="1508564349477" duration="75000" />
+      <workItem from="1508585387962" duration="453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52859000" />
+    <option name="totallyTimeSpent" value="53368000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -669,13 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/common/bts/btsRating.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="59" column="50" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="59" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/publications/common_publications.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -770,6 +788,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="482">
           <caret line="51" column="25" lean-forward="false" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/common/bts/btsRating.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="58" column="38" lean-forward="false" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
           <folding />
         </state>
       </provider>
